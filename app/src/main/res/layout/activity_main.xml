@@ -29,19 +29,19 @@
                 android:id="@+id/bt_formularios"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="FORMULARIOS" />
+                android:text="@string/bt_formularios_text" />
 
             <Button
                 android:id="@+id/bt_calculadora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CALCULADORA" />
+                android:text="@string/bt_calculadora_text" />
 
             <Button
                 android:id="@+id/bt_salir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SALIR" />
+                android:text="@string/bt_salir_text" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
