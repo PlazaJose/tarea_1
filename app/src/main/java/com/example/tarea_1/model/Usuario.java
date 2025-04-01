@@ -13,6 +13,7 @@ public class Usuario implements Serializable {
     String estado_civil;//[opciones: Soltero, Casado, Otro]
 
     private Informacion_academica informacion_academica;
+    private Preferencias preferencias;
 
     int id;
     public Usuario(String nombre, String apellido, int edad, String email, String telefono, String addres, String sexo, String documento_identidad, String estado_civil, int id){
@@ -85,6 +86,14 @@ public class Usuario implements Serializable {
 
     public void setInformacion_academica(Informacion_academica informacion_academica){
         this.informacion_academica = informacion_academica;
+    }
+
+    public Preferencias getPreferencias(){
+        return preferencias;
+    }
+
+    public void setPreferencias(Preferencias preferencias){
+        this.preferencias = preferencias;
     }
 
     @Override

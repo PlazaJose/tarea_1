@@ -1,6 +1,8 @@
 package com.example.tarea_1.model;
 
-public class Informacion_academica {
+import java.io.Serializable;
+
+public class Informacion_academica implements Serializable {
 
     private String institucion;
     private String carrera;
