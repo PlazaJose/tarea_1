@@ -26,6 +26,290 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_ef_informacion_basica_text" />
+
+            <EditText
+                android:id="@+id/edt_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/edt_ef_nombre_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="name"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                />
+
+            <EditText
+                android:id="@+id/edt_apellido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/edt_ef_apellido_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="name"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                />
+
+            <EditText
+                android:id="@+id/edt_edad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/edt_ef_edad_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="age"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:inputType="number"/>
+
+            <TextView
+                android:id="@+id/tv_informacion_contacto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_informacion_contacto_text"/>
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/edt_ef_correo_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="emailAddress"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:inputType="textEmailAddress"/>
+
+            <EditText
+                android:id="@+id/edt_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/edt_ef_telefono_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="phone"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:inputType="phone"/>
+
+            <TextView
+                android:id="@+id/tv_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_informacion_direccion_text"/>
+
+            <EditText
+                android:id="@+id/edt_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/edt_ef_direccion_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="postalAddress"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
+            <TextView
+                android:id="@+id/tv_identidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_informacion_identidad_text" />
+
+            <Spinner
+                android:id="@+id/spin_tipo_doc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
+            <EditText
+                android:id="@+id/edt_identificacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/edt_ef_numero_doc_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="postalCode"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:inputType="number"/>
+
+            <TextView
+                android:id="@+id/tv_informacion_adicional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_informacion_adicional_text"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rb_hombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rb_hombre_text"/>
+
+                <RadioButton
+                    android:id="@+id/rb_mujer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rb_mujer_text"/>
+
+                <RadioButton
+                    android:id="@+id/rb_otro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rb_otro_text"/>
+
+                <RadioButton
+                    android:id="@+id/rb_no_decir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rb_no_decir_text"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_estado_civil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_estado_civil_text" />
+
+            <Spinner
+                android:id="@+id/spin_estado_civil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:minWidth="48dp"/>
+
+            <TextView
+                android:id="@+id/tv_informacion_academica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_informacion_academica_text" />
+
+            <EditText
+                android:id="@+id/edt_institucion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/edt_ef_institucion_texto"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="Institution"
+                android:minWidth="48dp"
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/edt_carrera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/edt_ef_carrera_texto"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="Carrera"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
+            <EditText
+                android:id="@+id/edt_ano_inicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/edt_ef_ano_inicio_texto"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="creditCardExpirationYear"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
+            <EditText
+                android:id="@+id/edt_ano_fin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:hint="@string/edt_ef_ano_fin_texto"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="creditCardExpirationYear"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
+            <EditText
+                android:id="@+id/edt_grado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="@string/edt_ef_grado_texto"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="grade"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
+            <TextView
+                android:id="@+id/tv_intereses_personales"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_preferencias_text" />
+
+            <TextView
+                android:id="@+id/tv_hobbies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_hobbies_text" />
+
+            <CheckBox
+                android:id="@+id/cb_peliculas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cb_ef_peliculas_text" />
+
+            <CheckBox
+                android:id="@+id/cb_videojuegos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cb_ef_videojuegos_text" />
+
+            <CheckBox
+                android:id="@+id/cb_deportes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cb_ef_deportes_text" />
+
+            <CheckBox
+                android:id="@+id/cb_baile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cb_ef_baile_text" />
+
+            <TextView
+                android:id="@+id/tv_generos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ef_generos_musicales_text" />
+
+            <Spinner
+                android:id="@+id/spn_generos_m1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spn_generos_m2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:id="@+id/spn_generos_m3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

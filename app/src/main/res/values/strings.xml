@@ -17,12 +17,30 @@
     <string name="edt_ef_correo_text">CORREO ELECTRÓNICO</string>
     <string name="edt_ef_telefono_text">NÚMERO DE TELEFONO</string>
     <string name="tv_ef_informacion_direccion_text">DIRECCIÓN</string>
-    <string name="edt_ef_direccion_text">DIRECCIÓN</string>
+    <string name="edt_ef_direccion_text">TU DIRECCIÓN</string>
     <string name="tv_ef_informacion_identidad_text">IDENTIDAD</string>
     <string name="edt_ef_tipo_doc_text">CC</string>
     <string name="edt_ef_numero_doc_text">NÚMERO DE DOCUMENTO</string>
     <string name="tv_ef_informacion_adicional_text">INFORMACIÓN ADICIONAL</string>
-    <string name="edt_ef_sexo_text">SEXO</string>
-    <string name="edt_ef_estado_civil_text">ESTADO CIVIL</string>
+    <string name="tv_ef_sexo_text">SEXO</string>
+    <string name="rb_hombre_text">HOMBRE</string>
+    <string name="rb_mujer_text">MUJER</string>
+    <string name="rb_otro_text">OTRO</string>
+    <string name="rb_no_decir_text">PREFIERO NO DECIR</string>
+    <string name="tv_ef_estado_civil_text">ESTADO CIVIL</string>
 
+    <string name="tv_ef_informacion_academica_text">INFORMACIÓN ACADÉMICA</string>
+    <string name="edt_ef_institucion_texto">NOMBRE DE LA INSTITUCIÓN</string>
+    <string name="edt_ef_carrera_texto">CARRERA</string>
+    <string name="edt_ef_ano_inicio_texto">AÑO DE INICIO</string>
+    <string name="edt_ef_ano_fin_texto">AÑO DE GRADUACIÓN</string>
+    <string name="edt_ef_grado_texto">GRADO OBTENIDO</string>
+
+    <string name="tv_ef_preferencias_text">ELIGE TUS PREFERENCIAS</string>
+    <string name="tv_ef_hobbies_text">ELIGE TUS HOBBIES</string>
+    <string name="cb_ef_peliculas_text">PELICULAS</string>
+    <string name="cb_ef_videojuegos_text">VIDEOJUEGOS</string>
+    <string name="cb_ef_deportes_text">DEPORTES</string>
+    <string name="cb_ef_baile_text">BAILE</string>
+    <string name="tv_ef_generos_musicales_text">ELIGE TUS GEENEROS MÚSICALES</string>
 </resources>
