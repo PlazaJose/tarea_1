@@ -5,16 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Formulario_edicion">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,24 +21,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/bt_formularios"
+            <TextView
+                android:id="@+id/tv_informacion_basica"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="formularios"
-                android:text="@string/bt_formularios_text" />
-
-            <Button
-                android:id="@+id/bt_calculadora"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/bt_calculadora_text" />
-
-            <Button
-                android:id="@+id/bt_salir"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/bt_salir_text" />
+                android:text="@string/tv_ef_informacion_basica_text" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

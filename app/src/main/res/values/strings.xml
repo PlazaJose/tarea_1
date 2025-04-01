@@ -3,4 +3,26 @@
     <string name="bt_formularios_text">FORMULARIOS</string>
     <string name="bt_calculadora_text">CALCULADORA</string>
     <string name="bt_salir_text">SALIR</string>
+
+    <string name="bt_crear_formulario_text">CREAR FORMULARIO</string>
+    <string name="bt_editar_formulario_text">BUSCAR FORMULARIO</string>
+    <string name="edt_editar_formulario_hint_text">(ID editar o buscar)</string>
+
+
+    <string name="tv_ef_informacion_basica_text">INFORMACIÓN BÁSICA</string>
+    <string name="edt_ef_nombre_text">NOMBRE</string>
+    <string name="edt_ef_apellido_text">APELLIDO</string>
+    <string name="edt_ef_edad_text">EDAD</string>
+    <string name="tv_ef_informacion_contacto_text">INFORMACIÓN DE CONTACTO</string>
+    <string name="edt_ef_correo_text">CORREO ELECTRÓNICO</string>
+    <string name="edt_ef_telefono_text">NÚMERO DE TELEFONO</string>
+    <string name="tv_ef_informacion_direccion_text">DIRECCIÓN</string>
+    <string name="edt_ef_direccion_text">DIRECCIÓN</string>
+    <string name="tv_ef_informacion_identidad_text">IDENTIDAD</string>
+    <string name="edt_ef_tipo_doc_text">CC</string>
+    <string name="edt_ef_numero_doc_text">NÚMERO DE DOCUMENTO</string>
+    <string name="tv_ef_informacion_adicional_text">INFORMACIÓN ADICIONAL</string>
+    <string name="edt_ef_sexo_text">SEXO</string>
+    <string name="edt_ef_estado_civil_text">ESTADO CIVIL</string>
+
 </resources>
