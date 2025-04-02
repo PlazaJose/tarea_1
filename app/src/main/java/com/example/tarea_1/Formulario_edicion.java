@@ -1,5 +1,6 @@
 package com.example.tarea_1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -113,6 +114,14 @@ public class Formulario_edicion extends AppCompatActivity {
         cb_h_videojuegos = findViewById(R.id.cb_videojuegos);
         cb_h_deportes = findViewById(R.id.cb_deportes);
         cb_h_baile = findViewById(R.id.cb_baile);
+
+        Intent intent = getIntent();
+        Usuario user = (Usuario) intent.getSerializableExtra("usuario");
+
+        // Display the user's details
+        if (user != null) {
+            set_usuario(user);
+        }
     }
 
     public void guardar(View v){
@@ -128,7 +137,7 @@ public class Formulario_edicion extends AppCompatActivity {
                 edt_telefono.getText().toString(),
                 edt_direccion.getText().toString(),
                 sexo,
-                spn_tipo_doc.getSelectedItem().toString()+edt_identificacion.getText().toString(),
+                spn_tipo_doc.getSelectedItem().toString()+"."+edt_identificacion.getText().toString(),
                 spn_estado_civil.getSelectedItem().toString()
         );
         Informacion_academica informacion_academica = new Informacion_academica(
@@ -152,7 +161,12 @@ public class Formulario_edicion extends AppCompatActivity {
         };
         Preferencias preferencias = new Preferencias(hobbies, generos_musicales);
         usuario.setPreferencias(preferencias);
-        Toast.makeText(this, usuario.userToString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, usuario.userToString(), Toast.LENGTH_SHORT).show();
+
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("usuario_nuevo", usuario);
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 
     private void set_usuario(Usuario usuario){
@@ -176,5 +190,26 @@ public class Formulario_edicion extends AppCompatActivity {
         cb_h_videojuegos.setChecked(usuario.getPreferencias().hasHobbie(hobies[1]));
         cb_h_deportes.setChecked(usuario.getPreferencias().hasHobbie(hobies[2]));
         cb_h_baile.setChecked(usuario.getPreferencias().hasHobbie(hobies[3]));
+
+        int position = ((ArrayAdapter<String>)spn_tipo_doc.getAdapter()).getPosition(usuario.getDocumento_identidad().split("\\.")[0]);
+        if (position >= 0) {
+            spn_tipo_doc.setSelection(position);
+        }
+        position = ((ArrayAdapter<String>)spn_estado_civil.getAdapter()).getPosition(usuario.getEstado_civil());
+        if (position >= 0) {
+            spn_estado_civil.setSelection(position);
+        }
+        position = ((ArrayAdapter<String>)spn_generos_m1.getAdapter()).getPosition(usuario.getPreferencias().getGeneros_musicales()[0]);
+        if (position >= 0) {
+            spn_generos_m1.setSelection(position);
+        }
+        position = ((ArrayAdapter<String>)spn_generos_m2.getAdapter()).getPosition(usuario.getPreferencias().getGeneros_musicales()[1]);
+        if (position >= 0) {
+            spn_generos_m2.setSelection(position);
+        }
+        position = ((ArrayAdapter<String>)spn_generos_m3.getAdapter()).getPosition(usuario.getPreferencias().getGeneros_musicales()[2]);
+        if (position >= 0) {
+            spn_generos_m3.setSelection(position);
+        }
     }
 }

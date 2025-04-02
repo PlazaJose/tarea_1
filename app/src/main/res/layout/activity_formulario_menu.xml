@@ -35,33 +35,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:minWidth="48dp">
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/edt_busqueda_id_formulario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:hint="@string/edt_editar_formulario_hint_text"
-                    android:textColorHint="@android:color/black"
                     android:autofillHints="ID"
+                    android:ems="10"
+                    android:hint="@string/edt_editar_formulario_hint_text"
+                    android:inputType="number"
                     android:minWidth="48dp"
-                    android:minHeight="48dp"/>
+                    android:minHeight="48dp"
+                    android:textColorHint="@android:color/black" />
 
                 <Button
                     android:id="@+id/bt_editar_formulario"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/bt_editar_formulario_text"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
-                    android:padding="12dp"/>
+                    android:onClick="buscar_usuario"
+                    android:padding="12dp"
+                    android:text="@string/bt_editar_formulario_text" />
             </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_fm_salir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="salir"
+                android:text="@string/bt_fm_salir_text" />
 
         </LinearLayout>
     </ScrollView>

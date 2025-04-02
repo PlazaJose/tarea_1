@@ -7,6 +7,7 @@
     <string name="bt_crear_formulario_text">CREAR FORMULARIO</string>
     <string name="bt_editar_formulario_text">BUSCAR FORMULARIO</string>
     <string name="edt_editar_formulario_hint_text">(ID editar o buscar)</string>
+    <string name="bt_fm_salir_text">SALIR Y GUARDAR</string>
 
 
     <string name="tv_ef_informacion_basica_text">INFORMACIÓN BÁSICA</string>

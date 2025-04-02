@@ -105,7 +105,7 @@ public class Usuario implements Serializable {
                 "Documento de Identidad: " + documento_identidad + "\n" +
                 "Sexo: " + sexo + "\n" +
                 "Estado Civil: " + estado_civil + "\n" +
-                "Informacion Academica: " + informacion_academica.toString() + "\n" +
+                "Informacion Academica: " + informacion_academica.informacionAcademicaToString() + "\n" +
                 "Preferencias: " + preferencias.preferenciasToString()+
                 '}';
     }
