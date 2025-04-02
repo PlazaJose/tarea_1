@@ -43,4 +43,6 @@
     <string name="cb_ef_deportes_text">DEPORTES</string>
     <string name="cb_ef_baile_text">BAILE</string>
     <string name="tv_ef_generos_musicales_text">ELIGE TUS GEENEROS MÚSICALES</string>
+
+    <string name="bt_ef_guardar_text">GUARDAR</string>
 </resources>

@@ -310,6 +310,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:id="@+id/bt_guardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="guardar"
+                android:text="@string/bt_ef_guardar_text" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
