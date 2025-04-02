@@ -32,4 +32,8 @@ public class formulario_menu extends AppCompatActivity {
         startActivity(intento);
     }
 
+    public void buscar_usuario(View v){
+        //
+    }
+
 }

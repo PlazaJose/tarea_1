@@ -25,6 +25,14 @@ public class Preferencias implements Serializable {
             return hobbies[position];
         }
     }
+
+    public boolean hasHobbie(String key){
+        if(!(hobbies != null && hobbies.length > 0))return false;
+        for(int i = 0; i<hobbies.length; i++){
+            if(hobbies[i].equals(key))return true;
+        }
+        return false;
+    }
     public String[] getGeneros_musicales(){
         return generos_musicales;
     }

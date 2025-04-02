@@ -56,6 +56,7 @@ public class Formulario_edicion extends AppCompatActivity {
     RadioButton rb_sexo_mujer;
     RadioButton rb_sexo_otro;
     RadioButton rb_sexo_nod;
+    String[] sexos = {"hombre", "mujer", "otro", "prefiero no decir"};
     EditText edt_institucion;
     EditText edt_carrera;
     EditText edt_ano_inicio;
@@ -65,6 +66,7 @@ public class Formulario_edicion extends AppCompatActivity {
     CheckBox cb_h_videojuegos;
     CheckBox cb_h_deportes;
     CheckBox cb_h_baile;
+    String[] hobies = {"PELICULAS", "VIDEOJUEGOS", "DEPORTES", "BAILE"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,10 +116,10 @@ public class Formulario_edicion extends AppCompatActivity {
     }
 
     public void guardar(View v){
-        String sexo = "prefiero no decir";
-        if(rb_sexo_hombre.isChecked())sexo = "Hombre";
-        if(rb_sexo_mujer.isChecked())sexo = "Mujer";
-        if(rb_sexo_otro.isChecked())sexo = "Otro";
+        String sexo = sexos[3];
+        if(rb_sexo_hombre.isChecked())sexo = sexos[0];
+        if(rb_sexo_mujer.isChecked())sexo = sexos[1];
+        if(rb_sexo_otro.isChecked())sexo = sexos[2];
         Usuario usuario = new Usuario(
                 edt_nombre.getText().toString(),
                 edt_apellido.getText().toString(),
@@ -138,10 +140,10 @@ public class Formulario_edicion extends AppCompatActivity {
         );
         usuario.setInformacion_academica(informacion_academica);
         ArrayList<String> al_hobbies = new ArrayList<String>();
-        if(cb_h_peliculas.isChecked())al_hobbies.add("PELICULAS");
-        if(cb_h_videojuegos.isChecked())al_hobbies.add("VIDEOJUEGos");
-        if(cb_h_deportes.isChecked())al_hobbies.add("DEPORTES");
-        if(cb_h_baile.isChecked())al_hobbies.add("BAILE");
+        if(cb_h_peliculas.isChecked())al_hobbies.add(hobies[0]);
+        if(cb_h_videojuegos.isChecked())al_hobbies.add(hobies[1]);
+        if(cb_h_deportes.isChecked())al_hobbies.add(hobies[2]);
+        if(cb_h_baile.isChecked())al_hobbies.add(hobies[3]);
         String[] hobbies = (al_hobbies.toArray(new String[0]));
         String[] generos_musicales= {
                 spn_generos_m1.getSelectedItem().toString(),
@@ -151,5 +153,28 @@ public class Formulario_edicion extends AppCompatActivity {
         Preferencias preferencias = new Preferencias(hobbies, generos_musicales);
         usuario.setPreferencias(preferencias);
         Toast.makeText(this, usuario.userToString(), Toast.LENGTH_SHORT).show();
+    }
+
+    private void set_usuario(Usuario usuario){
+        edt_nombre.setText(usuario.getNombre());
+        edt_apellido.setText(usuario.getApellidos());
+        edt_edad.setText(usuario.getEdad());
+        edt_correo.setText(usuario.getEmail());
+        edt_telefono.setText(usuario.getTelefono());
+        edt_direccion.setText(usuario.getAddres());
+        edt_identificacion.setText(usuario.getDocumento_identidad());
+        rb_sexo_hombre.setChecked(usuario.getSexo().equals(sexos[0]));
+        rb_sexo_mujer.setChecked(usuario.getSexo().equals(sexos[1]));
+        rb_sexo_otro.setChecked(usuario.getSexo().equals(sexos[2]));
+        rb_sexo_nod.setChecked(usuario.getSexo().equals(sexos[3]));
+        edt_institucion.setText(usuario.getInformacion_academica().getInstitucion());
+        edt_carrera.setText(usuario.getInformacion_academica().getCarrera());
+        edt_ano_inicio.setText(""+(usuario.getInformacion_academica().getAno_inicio()));
+        edt_ano_fin.setText(""+(usuario.getInformacion_academica().getAno_finalizacion()));
+        edt_grado.setText(usuario.getInformacion_academica().getGrado_obtenido());
+        cb_h_peliculas.setChecked(usuario.getPreferencias().hasHobbie(hobies[0]));
+        cb_h_videojuegos.setChecked(usuario.getPreferencias().hasHobbie(hobies[1]));
+        cb_h_deportes.setChecked(usuario.getPreferencias().hasHobbie(hobies[2]));
+        cb_h_baile.setChecked(usuario.getPreferencias().hasHobbie(hobies[3]));
     }
 }
