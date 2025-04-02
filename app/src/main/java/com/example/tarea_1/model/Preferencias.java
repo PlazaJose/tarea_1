@@ -31,4 +31,16 @@ public class Preferencias implements Serializable {
     public void setGeneros_musicales(String[] generosMusicales){
         this.generos_musicales = generosMusicales;
     }
+
+    public String preferenciasToString(){
+        // Convert hobbies array to a string (if not null or empty)
+        String hobbiesString = (hobbies != null && hobbies.length > 0) ? String.join(", ", hobbies) : "No hobbies listed";
+
+        // Convert generos_musicales array to a string (if not empty)
+        String generosMusicalesString = (generos_musicales != null && generos_musicales.length > 0) ?
+                String.join(", ", generos_musicales) : "No music genres listed";
+
+        return "Hobbies: " + hobbiesString + "\n" +
+                "Generos Musicales: " + generosMusicalesString;
+    }
 }

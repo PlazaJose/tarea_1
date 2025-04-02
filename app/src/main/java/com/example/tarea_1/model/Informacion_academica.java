@@ -34,4 +34,12 @@ public class Informacion_academica implements Serializable {
     public String getGrado_obtenido() {
         return grado_obtenido;
     }
+
+    public String informacionAcademicaToString(){
+        return "Institucion: " + institucion + "\n" +
+                "Carrera: " + carrera + "\n" +
+                "Año de inicio: " + ano_inicio + "\n" +
+                "Año de finalizacion: " + ano_finalizacion + "\n" +
+                "Grado obtenido: " + grado_obtenido;
+    }
 }

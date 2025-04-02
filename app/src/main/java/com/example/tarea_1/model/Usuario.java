@@ -96,11 +96,17 @@ public class Usuario implements Serializable {
         this.preferencias = preferencias;
     }
 
-    @Override
-    public String toString(){
-        return "Usuario<"+id+">{" +
-                "nombre='" + nombre + '\'' +
-                ", correo='" + email + '\'' +
+    public String userToString(){
+        return "Nombre: " + nombre + " " + apellidos + "\n" +
+                "Edad: " + edad + "\n" +
+                "Email: " + email + "\n" +
+                "Telefono: " + telefono + "\n" +
+                "Address: " + addres + "\n" +
+                "Documento de Identidad: " + documento_identidad + "\n" +
+                "Sexo: " + sexo + "\n" +
+                "Estado Civil: " + estado_civil + "\n" +
+                "Informacion Academica: " + informacion_academica.toString() + "\n" +
+                "Preferencias: " + preferencias.preferenciasToString()+
                 '}';
     }
 

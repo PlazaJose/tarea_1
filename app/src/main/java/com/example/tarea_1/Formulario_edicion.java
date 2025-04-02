@@ -150,6 +150,6 @@ public class Formulario_edicion extends AppCompatActivity {
         };
         Preferencias preferencias = new Preferencias(hobbies, generos_musicales);
         usuario.setPreferencias(preferencias);
-        Toast.makeText(this, usuario.toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, usuario.userToString(), Toast.LENGTH_SHORT).show();
     }
 }
