@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
     private Informacion_academica informacion_academica;
     private Preferencias preferencias;
 
-    int id;
+    int id = -1;
     public Usuario(String nombre, String apellido, int edad, String email, String telefono, String addres, String sexo, String documento_identidad, String estado_civil, int id){
         this.nombre = nombre;
         this.apellidos = apellido;
@@ -81,7 +81,10 @@ public class Usuario implements Serializable {
     }
 
     public Informacion_academica getInformacion_academica(){
-        return informacion_academica;
+        if(informacion_academica != null){
+            return informacion_academica;
+        }
+        return new Informacion_academica("nn", "nn", -1, -1, "nn");
     }
 
     public void setInformacion_academica(Informacion_academica informacion_academica){
@@ -89,7 +92,11 @@ public class Usuario implements Serializable {
     }
 
     public Preferencias getPreferencias(){
-        return preferencias;
+        if(preferencias!=null)return preferencias;
+
+        String[] hobiies = {"not defined"};
+        String[] gustos_musicales = {"not defined", "not defined", "not defined"};
+        return new Preferencias(hobiies, gustos_musicales);
     }
 
     public void setPreferencias(Preferencias preferencias){
@@ -105,8 +112,8 @@ public class Usuario implements Serializable {
                 "Documento de Identidad: " + documento_identidad + "\n" +
                 "Sexo: " + sexo + "\n" +
                 "Estado Civil: " + estado_civil + "\n" +
-                "Informacion Academica: " + informacion_academica.informacionAcademicaToString() + "\n" +
-                "Preferencias: " + preferencias.preferenciasToString()+
+                "Informacion Academica: " + getInformacion_academica().informacionAcademicaToString() + "\n" +
+                "Preferencias: " + getPreferencias().preferenciasToString()+
                 '}';
     }
 

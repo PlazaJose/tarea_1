@@ -33,6 +33,8 @@ public class formulario_menu extends AppCompatActivity {
         });
         edt_id = findViewById(R.id.edt_busqueda_id_formulario);
         lista_usuarios = (Lista_usuarios) getIntent().getSerializableExtra("lista_usuarios");
+
+        if(lista_usuarios !=null)Toast.makeText(this, "tamaño lista"+lista_usuarios.getUsuarios().size(), Toast.LENGTH_SHORT).show();
     }
 
     public void crear_usuario(View v){
@@ -44,19 +46,17 @@ public class formulario_menu extends AppCompatActivity {
         if(edt_id.getText().toString().equals("")){
             Toast.makeText(this, "Ingrese un id", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(this, ""+lista_usuarios.getUsuarios().size(), Toast.LENGTH_SHORT).show();
             Usuario usuario = lista_usuarios.get_by_id(Integer.parseInt(edt_id.getText().toString()));
-            Toast.makeText(this,usuario.userToString(), Toast.LENGTH_SHORT).show();
-            //Intent intento = new Intent(this, Formulario_edicion.class);
-            //intento.putExtra("usuario", usuario);
-            //startActivity(intento);
+            Intent intento = new Intent(this, Formulario_edicion.class);
+            intento.putExtra("usuario", usuario);
+            startActivityForResult(intento, 3);
         }
     }
 
     public void salir(View v){
 
         Intent resultIntent = new Intent();
-        resultIntent.putExtra("lista", lista_usuarios);
+        resultIntent.putExtra("lista_usuarios", lista_usuarios);
         setResult(RESULT_OK, resultIntent);
         finish();
     }

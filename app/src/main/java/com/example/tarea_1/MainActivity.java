@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         lista_usuarios = new Lista_usuarios();
+
     }
 
     public void formularios(View v){
@@ -40,8 +41,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==RESULT_OK){
-            lista_usuarios = (Lista_usuarios) data.getSerializableExtra("lista_usuarios");
-            Toast.makeText(this, "lista guardada", Toast.LENGTH_SHORT).show();
+            Lista_usuarios nueva = (Lista_usuarios) data.getSerializableExtra("lista_usuarios");
+            if(nueva != null){
+                lista_usuarios = nueva;
+                Toast.makeText(this, "lista guardada", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "lista null", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

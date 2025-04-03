@@ -68,6 +68,7 @@ public class Formulario_edicion extends AppCompatActivity {
     CheckBox cb_h_deportes;
     CheckBox cb_h_baile;
     String[] hobies = {"PELICULAS", "VIDEOJUEGOS", "DEPORTES", "BAILE"};
+    Usuario usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +122,7 @@ public class Formulario_edicion extends AppCompatActivity {
         // Display the user's details
         if (user != null) {
             set_usuario(user);
+            this.usuario = user;
         }
     }
 
@@ -163,6 +165,11 @@ public class Formulario_edicion extends AppCompatActivity {
         usuario.setPreferencias(preferencias);
         //Toast.makeText(this, usuario.userToString(), Toast.LENGTH_SHORT).show();
 
+        if(this.usuario!=null){
+            usuario.setId(this.usuario.getId());
+            Toast.makeText(this, "usuario editando", Toast.LENGTH_SHORT).show();
+        }
+
         Intent resultIntent = new Intent();
         resultIntent.putExtra("usuario_nuevo", usuario);
         setResult(RESULT_OK, resultIntent);
@@ -172,7 +179,7 @@ public class Formulario_edicion extends AppCompatActivity {
     private void set_usuario(Usuario usuario){
         edt_nombre.setText(usuario.getNombre());
         edt_apellido.setText(usuario.getApellidos());
-        edt_edad.setText(usuario.getEdad());
+        edt_edad.setText(""+usuario.getEdad());
         edt_correo.setText(usuario.getEmail());
         edt_telefono.setText(usuario.getTelefono());
         edt_direccion.setText(usuario.getAddres());

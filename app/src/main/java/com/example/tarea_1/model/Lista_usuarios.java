@@ -12,9 +12,24 @@ public class Lista_usuarios implements Serializable {
     }
 
     public void add_user(Usuario nuevo){
-        nuevo.setId(this.id_counter);
-        this.usuarios.add(nuevo);
-        this.id_counter++;
+        if(nuevo.getId() == -1){
+            nuevo.setId(this.id_counter);
+            this.usuarios.add(nuevo);
+            this.id_counter++;
+        }else {
+            this.modify_user(nuevo);
+        }
+    }
+
+    public void modify_user(Usuario nuevo){
+        Usuario old = get_by_id(nuevo.id);
+        if(old.id != -1){
+            for (int i = 0; i<this.usuarios.size(); i++){
+                if(this.usuarios.get(i).getId() == nuevo.getId()){
+                    this.usuarios.set(i, nuevo);
+                }
+            }
+        }
     }
     public Usuario get_by_id(int id){
         for (int i = 0; i<this.usuarios.size(); i++){
