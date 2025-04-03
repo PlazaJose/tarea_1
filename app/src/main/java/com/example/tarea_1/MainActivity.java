@@ -37,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intento, 1);
     }
 
+    public void calculadora(View v){
+        Intent intento = new Intent(this, Calculadora.class);
+        startActivity(intento);
+    }
+
+    public void exit(View v){
+        System.exit(0);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -46,4 +46,37 @@
     <string name="tv_ef_generos_musicales_text">ELIGE TUS GEENEROS MÚSICALES</string>
 
     <string name="bt_ef_guardar_text">GUARDAR</string>
+
+    <string name="tv_calculadora_title_text">CALCULADORA</string>
+
+    <string name="bt_n_0_text">0</string>
+    <string name="bt_n_1_text">1</string>
+    <string name="bt_n_2_text">2</string>
+    <string name="bt_n_3_text">3</string>
+    <string name="bt_n_4_text">4</string>
+    <string name="bt_n_5_text">5</string>
+    <string name="bt_n_6_text">6</string>
+    <string name="bt_n_7_text">7</string>
+    <string name="bt_n_8_text">8</string>
+    <string name="bt_n_9_text">9</string>
+
+    <string name="bt_mm_text">+/-</string>
+    <string name="bt_dot_text">.</string>
+    <string name="bt_equal_text">=</string>
+
+    <string name="bt_sum_text">+</string>
+    <string name="bt_rest_text">-</string>
+    <string name="bt_mult_text">*</string>
+    <string name="bt_div_text">/</string>
+
+    <string name="bt_sqr_root_text">√X</string>
+    <string name="bt_sqr_text">x²</string>
+    <string name="bt_divided_x">1/x</string>
+
+    <string name="bt_calc_back_text">←</string>
+    <string name="bt_c_text">C</string>
+    <string name="bt_ce_text">CE</string>
+    <string name="bt_other_text">Back</string>
+
+    <string name="opration_text">The Operation</string>
 </resources>

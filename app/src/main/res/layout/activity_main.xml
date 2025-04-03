@@ -36,12 +36,14 @@
                 android:id="@+id/bt_calculadora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="calculadora"
                 android:text="@string/bt_calculadora_text" />
 
             <Button
                 android:id="@+id/bt_salir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="exit"
                 android:text="@string/bt_salir_text" />
         </LinearLayout>
     </ScrollView>
