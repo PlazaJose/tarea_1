@@ -135,6 +135,8 @@ public class Calculadora extends AppCompatActivity {
             current_info += "9";
         }else if (v.getId() == R.id.n0) {
             current_info += "0";
+        }else if (v.getId() == R.id.bt_dot){
+            current_info += add_dot();
         }
         show_operation();
     }
@@ -148,6 +150,13 @@ public class Calculadora extends AppCompatActivity {
         } else if (v.getId() == R.id.b_sum) {
             add_operation("+");
         }
+    }
+
+    public String add_dot(){
+        if(current_info == null) return "";
+        if(current_info.isEmpty()) return "";
+        if(current_info.contains(".")) return "";
+        return ".";
     }
 
     public void equal(View v){

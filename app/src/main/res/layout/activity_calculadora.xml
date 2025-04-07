@@ -275,10 +275,11 @@
                 android:textColor="#007bff" />
 
             <Button
-                android:id="@+id/button23"
+                android:id="@+id/bt_dot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:onClick="add_op"
                 android:padding="10dp"
                 android:text="@string/bt_dot_text"
                 android:textColor="#007bff" />
