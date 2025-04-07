@@ -88,19 +88,21 @@
                 android:textColor="#007bff" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/bt_potencia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:onClick="add_op"
                 android:padding="10dp"
                 android:text="@string/bt_sqr_text"
                 android:textColor="#007bff" />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/bt_raiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:onClick="add_op"
                 android:padding="10dp"
                 android:text="@string/bt_sqr_root_text"
                 android:textColor="#007bff" />
