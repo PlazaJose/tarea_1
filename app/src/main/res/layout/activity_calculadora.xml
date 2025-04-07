@@ -256,10 +256,11 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button21"
+                android:id="@+id/bt_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:onClick="add_op"
                 android:padding="10dp"
                 android:text="@string/bt_mm_text"
                 android:textColor="#007bff" />

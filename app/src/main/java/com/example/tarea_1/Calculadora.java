@@ -137,6 +137,8 @@ public class Calculadora extends AppCompatActivity {
             current_info += "0";
         }else if (v.getId() == R.id.bt_dot){
             current_info += add_dot();
+        }else if (v.getId() == R.id.bt_sign){
+            current_info = change_sign();
         }
         show_operation();
     }
@@ -152,11 +154,19 @@ public class Calculadora extends AppCompatActivity {
         }
     }
 
-    public String add_dot(){
+    private String add_dot(){
         if(current_info == null) return "";
         if(current_info.isEmpty()) return "";
         if(current_info.contains(".")) return "";
         return ".";
+    }
+
+    private String change_sign(){
+        if(current_info == null) return current_info;
+        if(current_info.isEmpty()) return current_info;
+        double current_number = Double.parseDouble(current_info);
+        double changed = current_number*-1;
+        return ""+changed;
     }
 
     public void equal(View v){
