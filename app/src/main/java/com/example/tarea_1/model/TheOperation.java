@@ -8,6 +8,7 @@ public class TheOperation {
     public static String SIGNO_RAIZ = "√";
     public static String SIGNO_POTENCIA = "²";
     String[] tier_list = {"(", SIGNO_POTENCIA, SIGNO_RAIZ, "*", "/", "+", "-"};
+    String[] tier_list_r = {"(", SIGNO_POTENCIA, SIGNO_RAIZ, "*/", "+-"};
 
     public TheOperation(ArrayList<String> operation_list){
         this.operation_list = operation_list;
@@ -15,23 +16,40 @@ public class TheOperation {
 
     public ArrayList<String> operate_subsequence_r(ArrayList<String> ss){
         ArrayList<String> result_tier_1 = get_squeres(ss);
-        if(check_tier(1, result_tier_1))return operate_subsequence_r(result_tier_1);
+        if(check_tier(tier_list[1], result_tier_1))return operate_subsequence_r(result_tier_1);
         ArrayList<String> result_tier_2 = get_squer_rooth(result_tier_1);
-        if(check_tier(2, result_tier_2))return operate_subsequence_r(result_tier_2);
-        ArrayList<String> result_tier_3 = get_multiplication(result_tier_2);
-        if(check_tier(3, result_tier_3))return operate_subsequence_r(result_tier_3);
-        ArrayList<String> result_tier_4 = get_division(result_tier_3);
-        if(check_tier(4, result_tier_4))return operate_subsequence_r(result_tier_4);
-        ArrayList<String> result_tier_5 = get_sums(result_tier_4);   //nueva tier
-        if(check_tier(5, result_tier_5))return operate_subsequence_r(result_tier_5);//nueva tier
-        ArrayList<String> result_tier_6 = get_restas(result_tier_5);   //nueva tier
-        if(check_tier(6, result_tier_6))return operate_subsequence_r(result_tier_6);//nueva tier
+        if(check_tier(tier_list[2], result_tier_2))return operate_subsequence_r(result_tier_2);
+        //ArrayList<String> result_tier_3 = get_multiplication(result_tier_2);
+        //if(check_tier(3, result_tier_3))return operate_subsequence_r(result_tier_3);
+        //ArrayList<String> result_tier_4 = get_division(result_tier_3);
+        //if(check_tier(4, result_tier_4))return operate_subsequence_r(result_tier_4);
+        ArrayList<String> result_tier_4 = get_Mult_Div(result_tier_2);
+        if(check_tier("*", result_tier_4))return operate_subsequence_r(result_tier_4);
+        if(check_tier("/", result_tier_4))return operate_subsequence_r(result_tier_4);
+        //ArrayList<String> result_tier_5 = get_sums(result_tier_4);   //nueva tier
+        //if(check_tier(5, result_tier_5))return operate_subsequence_r(result_tier_5);//nueva tier
+        //ArrayList<String> result_tier_6 = get_restas(result_tier_5);   //nueva tier
+        //if(check_tier(6, result_tier_6))return operate_subsequence_r(result_tier_6);//nueva tier
+        ArrayList<String> result_tier_6 = get_sum_res(result_tier_4);   //nueva tier
+        if(check_tier("+", result_tier_6))return operate_subsequence_r(result_tier_6);//nueva tier
+        if(check_tier("-", result_tier_6))return operate_subsequence_r(result_tier_6);//nueva tier
         return result_tier_6;//nueva tier
     }
 
-    private boolean check_tier(int tier, ArrayList<String> ss){
+    private boolean check_tier_old(int tier, ArrayList<String> ss){
         for (int i = 0; i < ss.size(); i++){
             if(ss.get(i).contains(tier_list[tier])){
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean check_tier(String tier, ArrayList<String> ss){
+        for (int i = 0; i < ss.size(); i++){
+            if(ss.get(i).contains(tier)){
+                if(tier.equals("-") && ss.get(i).length()>1){
+                    return false;
+                }
                 return true;
             }
         }
@@ -119,6 +137,35 @@ public class TheOperation {
         return result_tier_4;
     }
 
+    private ArrayList<String> get_Mult_Div(ArrayList<String> lista){
+        ArrayList<String> result = new ArrayList<>();
+        boolean entered = false;
+        int omitir = -1;
+        for (int i = 0; i < lista.size(); i++) {
+            if ((lista.get(i).equals("*")) && !entered) {
+                if (i + 1 < lista.size() && i-1 >= 0) {
+                    Double no1 = Double.valueOf(lista.get(i - 1));
+                    Double no2 = Double.valueOf(lista.get(i + 1));
+                    double r = no1 * no2;
+                    result.set(result.size()-1, "" + r);
+                    entered = true;
+                    omitir = i+1;
+                }
+            }else if (lista.get(i).equals("/") && !entered) {
+                if (i + 1 < lista.size() && i-1 >= 0) {
+                    Double no1 = Double.valueOf(lista.get(i - 1));
+                    Double no2 = Double.valueOf(lista.get(i + 1));
+                    double r = no1 / no2;
+                    result.set(result.size()-1, "" + r);
+                    entered = true;
+                    omitir = i+1;
+                }
+            } else{
+                if(i!=omitir)result.add(lista.get(i));
+            }
+        }
+        return result;
+    }
     private ArrayList<String> get_sums(ArrayList<String> result_tier_4){
         ArrayList<String> result_tier_5 = new ArrayList<>();
         boolean entered = false;
@@ -161,6 +208,37 @@ public class TheOperation {
             }
         }
         return result_tier_6;
+    }
+
+    private ArrayList<String> get_sum_res(ArrayList<String> lista){
+        ArrayList<String> result = new ArrayList<>();
+        boolean entered = false;
+        int omitir = -1;
+        for (int i = 0; i < lista.size(); i++) {      //vieja tier
+            if (lista.get(i).equals("+") && !entered) {//vieja tier validar operacion
+                if (i + 1 < lista.size() && i - 1 >= 0) {//vieja tier
+                    Double no1 = Double.valueOf(lista.get(i - 1));//vieja tier
+                    Double no2 = Double.valueOf(lista.get(i + 1));//vieja tier
+                    double r = no1 + no2; //operacion
+                    result.set(result.size()-1, "" + r);//nueva tier
+                    entered = true;
+                    omitir = i+1;
+                }
+            }else if (lista.get(i).equals("-") && !entered) {//vieja tier validar operacion
+                if (i + 1 < lista.size() && i - 1 >= 0) {//vieja tier
+                    Double no1 = Double.valueOf(lista.get(i - 1));//vieja tier
+                    Double no2 = Double.valueOf(lista.get(i + 1));//vieja tier
+                    double r = no1 - no2; //operacion
+                    result.set(result.size()-1, "" + r);//nueva tier
+                    entered = true;
+                    omitir = i+1;
+                    //Toast.makeText(this, no1+":"+no2+":"+r, Toast.LENGTH_SHORT).show();
+                }
+            } else{
+                if(i!=omitir)result.add(lista.get(i));//nueva   (   vieja tier
+            }
+        }
+        return result;
     }
 
 }

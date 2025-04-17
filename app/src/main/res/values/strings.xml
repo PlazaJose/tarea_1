@@ -71,7 +71,7 @@
 
     <string name="bt_sqr_root_text">√X</string>
     <string name="bt_sqr_text">x²</string>
-    <string name="bt_divided_x">1/x</string>
+    <string name="bt_divided_x">(</string>
 
     <string name="bt_calc_back_text">←</string>
     <string name="bt_c_text">C</string>
