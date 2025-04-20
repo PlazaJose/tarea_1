@@ -61,6 +61,16 @@ public class formulario_menu extends AppCompatActivity {
         finish();
     }
 
+    public void ver_lista_usuarios(View v){
+        if(lista_usuarios!=null){
+            Intent intent = new Intent(this, Lista_usuarios_view.class);
+             intent.putExtra("lista_usuarios", lista_usuarios);
+             startActivity(intent);
+        }else {
+            Toast.makeText(this, "No se han añadido usuarios", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

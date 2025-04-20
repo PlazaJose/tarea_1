@@ -167,7 +167,7 @@ public class Formulario_edicion extends AppCompatActivity {
 
         if(this.usuario!=null){
             usuario.setId(this.usuario.getId());
-            Toast.makeText(this, "usuario editando", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "usuario editado: "+usuario.getId(), Toast.LENGTH_SHORT).show();
         }
 
         Intent resultIntent = new Intent();

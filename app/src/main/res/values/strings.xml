@@ -7,6 +7,7 @@
     <string name="bt_crear_formulario_text">CREAR FORMULARIO</string>
     <string name="bt_editar_formulario_text">BUSCAR FORMULARIO</string>
     <string name="edt_editar_formulario_hint_text">(ID editar o buscar)</string>
+    <string name="bt_fm_ver_lista_text">LISTA DE USUARIOS</string>
     <string name="bt_fm_salir_text">SALIR Y GUARDAR</string>
 
 
@@ -79,4 +80,7 @@
     <string name="bt_other_text">Back</string>
 
     <string name="opration_text">The Operation</string>
+
+
+    <string name="tv_luv_title">LISTA DE USUARIOS REGISTRADOS</string>
 </resources>
