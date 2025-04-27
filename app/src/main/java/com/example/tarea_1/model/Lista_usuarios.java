@@ -1,5 +1,7 @@
 package com.example.tarea_1.model;
 
+import android.widget.Toast;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,6 +13,14 @@ public class Lista_usuarios implements Serializable {
         this.add_user(new Usuario("not found", "not found", 0,"not found", "not found", "not found", "not found", "not found", "not found"));
     }
 
+    public void add_user_nf(Usuario nuevo){
+        this.usuarios.add(nuevo);
+        /*if(this.usuarios.stream().anyMatch(usuario -> usuario.getId() == nuevo.getId())){
+            modify_user(nuevo);
+        }else {
+            this.usuarios.add(nuevo);
+        }*/
+    }
     public void add_user(Usuario nuevo){
         if(nuevo.getId() == -1){
             nuevo.setId(this.id_counter);
@@ -18,6 +28,15 @@ public class Lista_usuarios implements Serializable {
             this.id_counter++;
         }else {
             this.modify_user(nuevo);
+        }
+    }
+
+    public void load_user(Usuario usuario){
+        if(usuario.getId()!=-1){
+            this.usuarios.add(usuario);
+            if(this.id_counter<=usuario.getId()){
+                this.id_counter = usuario.getId()+1;
+            }
         }
     }
 
@@ -41,6 +60,6 @@ public class Lista_usuarios implements Serializable {
     }
 
     public ArrayList<Usuario> getUsuarios() {
-        return usuarios;
+        return this.usuarios;
     }
 }

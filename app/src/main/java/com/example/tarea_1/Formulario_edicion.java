@@ -183,7 +183,8 @@ public class Formulario_edicion extends AppCompatActivity {
         edt_correo.setText(usuario.getEmail());
         edt_telefono.setText(usuario.getTelefono());
         edt_direccion.setText(usuario.getAddres());
-        edt_identificacion.setText(usuario.getDocumento_identidad());
+        String[] str_identification = usuario.getDocumento_identidad().split("\\.");
+        edt_identificacion.setText(str_identification[str_identification.length-1]);
         rb_sexo_hombre.setChecked(usuario.getSexo().equals(sexos[0]));
         rb_sexo_mujer.setChecked(usuario.getSexo().equals(sexos[1]));
         rb_sexo_otro.setChecked(usuario.getSexo().equals(sexos[2]));
@@ -206,6 +207,7 @@ public class Formulario_edicion extends AppCompatActivity {
         if (position >= 0) {
             spn_estado_civil.setSelection(position);
         }
+        Toast.makeText(this, "cantidad de generos: "+usuario.getPreferencias().getGeneros_musicales().length, Toast.LENGTH_SHORT).show();
         position = ((ArrayAdapter<String>)spn_generos_m1.getAdapter()).getPosition(usuario.getPreferencias().getGeneros_musicales()[0]);
         if (position >= 0) {
             spn_generos_m1.setSelection(position);

@@ -1,4 +1,6 @@
 package com.example.tarea_1.model;
+import android.content.ContentValues;
+
 import java.io.Serializable;
 public class Usuario implements Serializable {
     String nombre;
@@ -16,9 +18,10 @@ public class Usuario implements Serializable {
     private Preferencias preferencias;
 
     int id = -1;
-    public Usuario(String nombre, String apellido, int edad, String email, String telefono, String addres, String sexo, String documento_identidad, String estado_civil, int id){
+    //ContentValues contentValues;
+    public Usuario(String nombre, String apellidos, int edad, String email, String telefono, String addres, String sexo, String documento_identidad, String estado_civil, int id){
         this.nombre = nombre;
-        this.apellidos = apellido;
+        this.apellidos = apellidos;
         this.edad = edad;
         this.email = email;
         this.telefono = telefono;
@@ -27,21 +30,34 @@ public class Usuario implements Serializable {
         this.estado_civil = estado_civil;
         this.documento_identidad = documento_identidad;
         this.id = id;
+        build_content();
     }
-    public Usuario(String nombre, String apellido, int edad, String email, String telefono, String addres, String sexo, String documento_identidad, String estado_civil){
-        this.nombre = nombre;
-        this.apellidos = apellido;
-        this.edad = edad;
-        this.email = email;
-        this.telefono = telefono;
-        this.addres = addres;
-        this.sexo = sexo;
-        this.estado_civil = estado_civil;
-        this.documento_identidad = documento_identidad;
+    public Usuario(String nombre, String apellidos, int edad, String email, String telefono, String addres, String sexo, String documento_identidad, String estado_civil){
+        this(nombre, apellidos, edad, email, telefono, addres, sexo, documento_identidad, estado_civil, -1);
+    }
+
+    private ContentValues build_content(){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("nombre", nombre);
+        contentValues.put("apellidos", apellidos);
+        contentValues.put("edad", edad);
+        contentValues.put("email", email);
+        contentValues.put("telefono", telefono);
+        contentValues.put("addres", addres);
+        contentValues.put("sexo", sexo);
+        contentValues.put("documento_identidad", documento_identidad);
+        contentValues.put("estado_civil", estado_civil);
+        //contentValues.put("id", id);
+        return contentValues;
+    }
+
+    public ContentValues getContentValues() {
+        return build_content();
     }
 
     public void setId(int id) {
         this.id = id;
+        build_content();
     }
 
     public int getEdad() {

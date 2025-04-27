@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.tarea_1.model.AdministradorSQLiteOpenHelper;
 import com.example.tarea_1.model.Lista_usuarios;
 import com.example.tarea_1.model.Usuario;
 
@@ -21,6 +22,7 @@ public class formulario_menu extends AppCompatActivity {
 
     EditText edt_id;
     Lista_usuarios lista_usuarios;
+    AdministradorSQLiteOpenHelper admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +34,12 @@ public class formulario_menu extends AppCompatActivity {
             return insets;
         });
         edt_id = findViewById(R.id.edt_busqueda_id_formulario);
-        lista_usuarios = (Lista_usuarios) getIntent().getSerializableExtra("lista_usuarios");
+        //lista_usuarios = (Lista_usuarios) getIntent().getSerializableExtra("lista_usuarios");
 
-        if(lista_usuarios !=null)Toast.makeText(this, "tamaño lista"+lista_usuarios.getUsuarios().size(), Toast.LENGTH_SHORT).show();
+        //if(lista_usuarios !=null)Toast.makeText(this, "tamaño lista"+lista_usuarios.getUsuarios().size(), Toast.LENGTH_SHORT).show();
+
+        admin = new AdministradorSQLiteOpenHelper(this, "agenda", null, 1);
+        lista_usuarios = admin.consultar_lista_usuarios();
     }
 
     public void crear_usuario(View v){
@@ -54,11 +59,17 @@ public class formulario_menu extends AppCompatActivity {
     }
 
     public void salir(View v){
-
+        guardar();
         Intent resultIntent = new Intent();
         resultIntent.putExtra("lista_usuarios", lista_usuarios);
         setResult(RESULT_OK, resultIntent);
         finish();
+    }
+
+    private void guardar(){
+        for (Usuario usuario:lista_usuarios.getUsuarios()) {
+            if(usuario.getId()!=-1)admin.guardar_usuario(usuario);
+        }
     }
 
     public void ver_lista_usuarios(View v){
@@ -77,7 +88,7 @@ public class formulario_menu extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             Usuario nuevo = (Usuario) data.getSerializableExtra("usuario_nuevo");
             lista_usuarios.add_user(nuevo);
-            Toast.makeText(this, "Guardado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Guardado: "+nuevo.getId()+":"+nuevo.getNombre(), Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this, "fallo el guardado", Toast.LENGTH_SHORT).show();
         }

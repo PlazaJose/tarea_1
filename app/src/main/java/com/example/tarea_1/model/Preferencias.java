@@ -1,15 +1,38 @@
 package com.example.tarea_1.model;
 
+import android.content.ContentValues;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Preferencias implements Serializable {
 
     String[] hobbies;
-    String[] generos_musicales = {"","",""};
+    String[] generos_musicales;
+    //ContentValues contentValues;
     public Preferencias(String[] hobbies, String[] generos_musicales){
         this.hobbies = hobbies;
-        this.generos_musicales = generos_musicales;
+        this.generos_musicales = new String[]{"","",""};
+        for(int i = 0; i < generos_musicales.length; i++){
+            if(i<this.generos_musicales.length)this.generos_musicales[i] = generos_musicales[i];
+        }
+        //this.generos_musicales = generos_musicales;
+        build_content();
+    }
+
+    private ContentValues build_content(){
+        ContentValues contentValues = new ContentValues();
+        StringBuilder str_hobbies = new StringBuilder();
+        for (String hobby : hobbies) {
+            str_hobbies.append(hobby).append(",");
+        }
+        contentValues.put("hobbies", str_hobbies.toString().substring(0, str_hobbies.toString().length()-1));
+        StringBuilder str_generos_musicales = new StringBuilder();
+        for (String genero : generos_musicales) {
+            str_generos_musicales.append(genero).append(",");
+        }
+        contentValues.put("generos_musicales", str_generos_musicales.toString().substring(0, str_generos_musicales.toString().length()-1));
+        return contentValues;
     }
 
     public String[] getHobbies(){
@@ -17,6 +40,7 @@ public class Preferencias implements Serializable {
     }
     public void setHobbies(String[] hobbies){
         this.hobbies = hobbies;
+        build_content();
     }
     public String getHobbie(int position){
         if (position>=hobbies.length){
@@ -38,6 +62,11 @@ public class Preferencias implements Serializable {
     }
     public void setGeneros_musicales(String[] generosMusicales){
         this.generos_musicales = generosMusicales;
+        build_content();
+    }
+
+    public ContentValues getContentValues() {
+        return build_content();
     }
 
     public String preferenciasToString(){

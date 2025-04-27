@@ -1,5 +1,7 @@
 package com.example.tarea_1.model;
 
+import android.content.ContentValues;
+
 import java.io.Serializable;
 
 public class Informacion_academica implements Serializable {
@@ -9,13 +11,29 @@ public class Informacion_academica implements Serializable {
     private int ano_inicio;
     private int ano_finalizacion;
     private String grado_obtenido;
+    //ContentValues contentValues;
     public  Informacion_academica(String institucion, String carrera, int ano_inicio, int ano_finalizacion, String grado_obtenido){
         this.institucion = institucion;
         this.carrera = carrera;
         this.ano_inicio = ano_inicio;
         this.ano_finalizacion = ano_finalizacion;
         this.grado_obtenido = grado_obtenido;
+        build_content();
     }
+    private ContentValues build_content(){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("institucion", institucion);
+        contentValues.put("carrera", carrera);
+        contentValues.put("ano_inicio", ano_inicio);
+        contentValues.put("ano_finalizacion", ano_finalizacion);
+        contentValues.put("grado_obtenido", grado_obtenido);
+        return contentValues;
+    }
+
+    public ContentValues getContentValues() {
+        return build_content();
+    }
+
     public String getInstitucion(){
         return institucion;
     }

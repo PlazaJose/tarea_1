@@ -40,13 +40,12 @@ public class Lista_usuarios_view extends AppCompatActivity {
         LinearLayout linearLayout = findViewById(R.id.ll_luv_main);
 
         for (Usuario usuario : lista_usuarios.getUsuarios()) {
-            Usuario_view usuario_view = new Usuario_view(this);
-            usuario_view.setUsuario(usuario);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            linearLayout.addView(usuario_view, params);
+            if(usuario.getId()!=-1){
+                Usuario_view usuario_view = new Usuario_view(this);
+                usuario_view.setUsuario(usuario);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                linearLayout.addView(usuario_view, params);
+            }
         }
-        TextView ntv = new TextView(this);
-        ntv.setText("!!!");
-        linearLayout.addView(ntv);
     }
 }
