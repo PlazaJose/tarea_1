@@ -58,11 +58,19 @@ public class AdministradorSQLiteOpenHelper extends SQLiteOpenHelper {
         //save preferencias
         ContentValues preferencias = usuario.getPreferencias().getContentValues();
         preferencias.put("id_usuario", usuario.getId());
-        crear_(PREFERENCIAS_TABLE_NAME, preferencias);
+        if(usuario_existe){
+            modificar_(PREFERENCIAS_TABLE_NAME, preferencias, "id_usuario", ""+usuario.getId());
+        }else {
+            crear_(PREFERENCIAS_TABLE_NAME, preferencias);
+        }
         //save informacion academica
         ContentValues informacion_academica = usuario.getInformacion_academica().getContentValues();
         informacion_academica.put("id_usuario", usuario.getId());
-        crear_(ACADEMIC_TABLE_NAME, informacion_academica);
+        if(usuario_existe){
+            modificar_(ACADEMIC_TABLE_NAME, informacion_academica, "id_usuario", ""+usuario.getId());
+        }else {
+            crear_(ACADEMIC_TABLE_NAME, informacion_academica);
+        }
     }
 
     private boolean usuario_existe(Usuario usuario){
@@ -95,6 +103,17 @@ public class AdministradorSQLiteOpenHelper extends SQLiteOpenHelper {
         //cerrar conexión
         //db.close();
         return edit>0;
+    }
+
+    private boolean existe_(String table_name, int id){
+        //open conection
+        SQLiteDatabase db = this.getReadableDatabase();
+        //selection query
+        String query = String.format("SELECT * FROM %s WHERE id = ?", table_name);
+        Cursor filtro = db.rawQuery(query, new String[]{String.valueOf(id)});
+        //return true if exists, false if doesnt
+        //db.close();
+        return filtro.getCount()>0;
     }
 
     private boolean crear_(String table_name, ContentValues contentValues){
