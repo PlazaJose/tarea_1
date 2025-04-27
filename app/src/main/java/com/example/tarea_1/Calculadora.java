@@ -2,8 +2,11 @@ package com.example.tarea_1;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -51,6 +54,7 @@ public class Calculadora extends AppCompatActivity {
         n8 = findViewById(R.id.n8);
         n9 = findViewById(R.id.n9);
         n0 = findViewById(R.id.n0);
+        theOperation = new TheOperation(operation_list);
     }
 
     public void back(View v){
@@ -194,10 +198,28 @@ public class Calculadora extends AppCompatActivity {
 
     public void equal(View v){
         add_operation("");
-        theOperation = new TheOperation(operation_list);
-        current_info = theOperation.operate_subsequence_r(operation_list).get(0);//operate_subsequence_r(operation_list).get(0);
+        //theOperation = new TheOperation(operation_list);
+        current_info = theOperation.operate_subsequence_r(operation_list).get(0);
+        theOperation.save_to_history(operation_list, current_info);
+        refresh_histoy();
         operation_list = new ArrayList<>();
         show_operation();
+    }
+
+    void refresh_histoy(){
+        LinearLayout linearLayout = findViewById(R.id.ll_calc_history);
+        if(linearLayout.getChildCount()>1){
+            linearLayout.removeViews(1, linearLayout.getChildCount()-1);
+        }
+        for(int i = TheOperation.HISTORY_LIMIT-1; i>=0; i--){
+            if(this.theOperation.history[i]!=null){
+                TextView tvh = new TextView(this);
+                String h = this.theOperation.getHistory_string(i)+" = "+theOperation.history_results[i];
+                tvh.setText(h);
+                //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                linearLayout.addView(tvh);
+            }
+        }
     }
 
 }

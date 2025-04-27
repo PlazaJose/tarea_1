@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class TheOperation {
     ArrayList<String> operation_list;
+    public ArrayList<String>[] history;
+    public String[] history_results;
+    public static int HISTORY_LIMIT = 10;
 
     public static String SIGNO_RAIZ = "√";
     public static String SIGNO_POTENCIA = "²";
@@ -12,6 +15,25 @@ public class TheOperation {
 
     public TheOperation(ArrayList<String> operation_list){
         this.operation_list = operation_list;
+        history = (ArrayList<String>[]) new ArrayList[HISTORY_LIMIT];
+        history_results = new String[HISTORY_LIMIT];
+    }
+
+    public void save_to_history(ArrayList<String> operation_list, String result){
+        for(int i = 1; i< HISTORY_LIMIT; i++){
+            history[i-1] = history[i];
+            history_results[i-1] = history_results[i];
+        }
+        history[HISTORY_LIMIT-1] = operation_list;
+        history_results[HISTORY_LIMIT-1] = result;
+    }
+
+    public String getHistory_string(int position){
+        StringBuilder history_string = new StringBuilder();
+        for(String op : history[position]){
+            history_string.append(op);
+        }
+        return history_string.toString();
     }
 
     public ArrayList<String> operate_subsequence_r(ArrayList<String> ss){

@@ -81,6 +81,8 @@
 
     <string name="opration_text">The Operation</string>
 
+    <string name="history_title">HISTORY</string>
+
 
     <string name="tv_luv_title">LISTA DE USUARIOS REGISTRADOS</string>
 </resources>
