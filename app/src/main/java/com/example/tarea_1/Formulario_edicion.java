@@ -1,6 +1,8 @@
 package com.example.tarea_1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -69,6 +72,7 @@ public class Formulario_edicion extends AppCompatActivity {
     CheckBox cb_h_baile;
     String[] hobies = {"PELICULAS", "VIDEOJUEGOS", "DEPORTES", "BAILE"};
     Usuario usuario;
+    boolean saved = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,6 +177,7 @@ public class Formulario_edicion extends AppCompatActivity {
         Intent resultIntent = new Intent();
         resultIntent.putExtra("usuario_nuevo", usuario);
         setResult(RESULT_OK, resultIntent);
+        saved = true;
         finish();
     }
 
@@ -220,5 +225,110 @@ public class Formulario_edicion extends AppCompatActivity {
         if (position >= 0) {
             spn_generos_m3.setSelection(position);
         }
+    }
+    private void guardar_preferencia(){
+        SharedPreferences sharedPreferences = getSharedPreferences("formulario_edicion", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putInt("spn_tipo_doc", spn_tipo_doc.getSelectedItemPosition());
+        editor.putInt("spn_estado_civil", spn_estado_civil.getSelectedItemPosition());
+        editor.putInt("spn_generos_m1", spn_generos_m1.getSelectedItemPosition());
+        editor.putInt("spn_generos_m2", spn_generos_m2.getSelectedItemPosition());
+        editor.putInt("spn_generos_m3", spn_generos_m3.getSelectedItemPosition());
+        editor.putInt("spn_estado_civil", spn_estado_civil.getSelectedItemPosition());
+        editor.putString("edt_nombre", edt_nombre.getText().toString());
+        editor.putString("edt_apellido", edt_apellido.getText().toString());
+        editor.putString("edt_edad", edt_edad.getText().toString());
+        editor.putString("edt_correo", edt_correo.getText().toString());
+        editor.putString("edt_telefono", edt_telefono.getText().toString());
+        editor.putString("edt_direccion", edt_direccion.getText().toString());
+        editor.putString("edt_identificacion", edt_identificacion.getText().toString());
+        editor.putBoolean("rb_sexo_hombre",rb_sexo_hombre.isChecked());
+        editor.putBoolean("rb_sexo_mujer",rb_sexo_mujer.isChecked());
+        editor.putBoolean("rb_sexo_otro",rb_sexo_otro.isChecked());
+        editor.putBoolean("rb_sexo_nod",rb_sexo_nod.isChecked());
+        editor.putString("edt_institucion", edt_institucion.getText().toString());
+        editor.putString("edt_carrera", edt_carrera.getText().toString());
+        editor.putString("edt_ano_inicio", edt_ano_inicio.getText().toString());
+        editor.putString("edt_ano_fin", edt_ano_fin.getText().toString());
+        editor.putString("edt_grado", edt_grado.getText().toString());
+        editor.putBoolean("cb_h_peliculas",cb_h_peliculas.isChecked());
+        editor.putBoolean("cb_h_videojuegos",cb_h_videojuegos.isChecked());
+        editor.putBoolean("cb_h_deportes",cb_h_deportes.isChecked());
+        editor.putBoolean("cb_h_baile",cb_h_baile.isChecked());
+
+        boolean info_personal = (!edt_nombre.getText().toString().isEmpty() ||!edt_apellido.getText().toString().isEmpty());
+        editor.putBoolean("saved", info_personal);
+        editor.apply();
+        Toast.makeText(this,"se ha guardado la preferencia", Toast.LENGTH_SHORT).show();
+    }
+
+    private void borrar_preferencias(){
+        SharedPreferences sharedPreferences = getSharedPreferences("formulario_edicion", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.putBoolean("saved", false);
+        editor.apply();
+    }
+    private void cargar_preferencias(){
+        SharedPreferences sharedPreferences = getSharedPreferences("formulario_edicion", Context.MODE_PRIVATE);
+        edt_nombre.setText(sharedPreferences.getString("edt_nombre",""));
+        edt_apellido.setText(sharedPreferences.getString("edt_apellido",""));
+        edt_edad.setText(sharedPreferences.getString("edt_edad",""));
+        edt_correo.setText(sharedPreferences.getString("edt_correo",""));
+        edt_telefono.setText(sharedPreferences.getString("edt_telefono",""));
+        edt_direccion.setText(sharedPreferences.getString("edt_direccion",""));
+        edt_identificacion.setText(sharedPreferences.getString("edt_identificacion",""));
+        rb_sexo_hombre.setChecked(sharedPreferences.getBoolean("rb_sexo_hombre", false));
+        rb_sexo_mujer.setChecked(sharedPreferences.getBoolean("rb_sexo_mujer", false));
+        rb_sexo_otro.setChecked(sharedPreferences.getBoolean("rb_sexo_otro", false));
+        rb_sexo_nod.setChecked(sharedPreferences.getBoolean("rb_sexo_nod", false));
+        edt_institucion.setText(sharedPreferences.getString("edt_institucion",""));
+        edt_carrera.setText(sharedPreferences.getString("edt_carrera",""));
+        edt_ano_inicio.setText(sharedPreferences.getString("edt_ano_inicio",""));
+        edt_ano_fin.setText(sharedPreferences.getString("edt_ano_fin",""));
+        edt_grado.setText(sharedPreferences.getString("edt_grado",""));
+        cb_h_peliculas.setChecked(sharedPreferences.getBoolean("cb_h_peliculas", false));
+        cb_h_videojuegos.setChecked(sharedPreferences.getBoolean("cb_h_videojuegos", false));
+        cb_h_deportes.setChecked(sharedPreferences.getBoolean("cb_h_deportes", false));
+        cb_h_baile.setChecked(sharedPreferences.getBoolean("cb_h_baile", false));
+
+        spn_tipo_doc.setSelection(sharedPreferences.getInt("spn_tipo_doc", 0));
+        spn_estado_civil.setSelection(sharedPreferences.getInt("spn_estado_civil", 0));
+        spn_generos_m1.setSelection(sharedPreferences.getInt("spn_generos_m1", 0));
+        spn_generos_m2.setSelection(sharedPreferences.getInt("spn_generos_m2", 0));
+        spn_generos_m3.setSelection(sharedPreferences.getInt("spn_generos_m3", 0));
+        Toast.makeText(this, "cargado: "+sharedPreferences.getString("edt_apellido",""), Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean preferencias_guardado(){
+        SharedPreferences sharedPreferences = getSharedPreferences("formulario_edicion", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("saved", false);
+    }
+
+    private void preferencias_confirmacion(){
+        new AlertDialog.Builder(this)
+                .setTitle("Previamente se slió sin guardar")
+                .setMessage("¿Quieres continuar?")
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    cargar_preferencias();
+                    borrar_preferencias();
+                })
+                .setNegativeButton("No", (dialog, which) -> {
+                    borrar_preferencias();
+                })
+                .show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(preferencias_guardado())preferencias_confirmacion();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(!saved)guardar_preferencia();
     }
 }
