@@ -304,6 +304,7 @@ public class Formulario_edicion extends AppCompatActivity {
     private boolean preferencias_guardado(){
         SharedPreferences sharedPreferences = getSharedPreferences("formulario_edicion", Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean("saved", false);
+
     }
 
     private void preferencias_confirmacion(){
