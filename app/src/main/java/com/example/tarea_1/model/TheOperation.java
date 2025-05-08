@@ -1,6 +1,8 @@
 package com.example.tarea_1.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class TheOperation {
     ArrayList<String> operation_list;
@@ -36,6 +38,32 @@ public class TheOperation {
         return history_string.toString();
     }
 
+    public void set_histoy_fromString(String str_history){
+        String[] new_history = str_history.split(";");
+        for (String h:new_history) {
+            ArrayList<String> now = new ArrayList<>();
+            char[] current = h.toCharArray();
+            String op = "";
+            String resutl = "";
+            for (int i = 0; i<current.length;i++) {
+                if(contains(tier_list, ""+current[i]) && !op.contains("=")){
+                    now.add(op);
+                    op = "";
+                    now.add(""+current[i]);
+                }else if(i+1>=current.length){
+                    System.out.println(op);
+                    now.add(op.substring(0,op.indexOf("=")));
+                    resutl = op.substring(op.indexOf("=")+1);
+                }else{
+                    op += current[i];
+                }
+            }
+            save_to_history(now, resutl);
+        }
+    }
+    public static boolean contains(String[] arr, String target) {
+        return Arrays.asList(arr).contains(target);
+    }
     public ArrayList<String> operate_subsequence_r(ArrayList<String> ss){
         ArrayList<String> result_tier_1 = get_squeres(ss);
         if(check_tier(tier_list[1], result_tier_1))return operate_subsequence_r(result_tier_1);

@@ -1,5 +1,6 @@
 package com.example.tarea_1;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.tarea_1.model.TheOperation;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class Calculadora extends AppCompatActivity {
@@ -55,6 +60,8 @@ public class Calculadora extends AppCompatActivity {
         n9 = findViewById(R.id.n9);
         n0 = findViewById(R.id.n0);
         theOperation = new TheOperation(operation_list);
+        open_saved_history();
+        refresh_histoy();
     }
 
     public void back(View v){
@@ -219,6 +226,45 @@ public class Calculadora extends AppCompatActivity {
                 //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 linearLayout.addView(tvh);
             }
+        }
+        save_history_txt();
+    }
+
+    void save_history_txt(){
+        StringBuilder history = new StringBuilder();
+        for(int i = TheOperation.HISTORY_LIMIT-1; i>=0; i--){
+            if(this.theOperation.history[i]!=null){
+                TextView tvh = new TextView(this);
+                String h = this.theOperation.getHistory_string(i)+"="+theOperation.history_results[i];
+                history.append(h);
+                history.append(";");
+            }
+        }
+        try {
+            OutputStreamWriter file = new OutputStreamWriter(openFileOutput("history", Context.MODE_PRIVATE));
+            file.write(history.toString());
+            file.flush();
+            file.close();
+            Toast.makeText(this, "archivo guardado", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    void open_saved_history(){
+        String nombre = "history";
+        try {
+            InputStreamReader file = new InputStreamReader(openFileInput(nombre));
+            BufferedReader br = new BufferedReader(file);
+            String linea = br.readLine();
+            StringBuilder texto = new StringBuilder();
+            while (linea !=null){
+                texto.append(linea);
+                linea = br.readLine();
+            }
+            theOperation.set_histoy_fromString(texto.toString());
+        } catch (IOException e) {
+            Toast.makeText(this, "ERROR"+e, Toast.LENGTH_SHORT).show();
         }
     }
 
