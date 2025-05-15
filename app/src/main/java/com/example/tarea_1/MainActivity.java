@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intento = new Intent(this, Calculadora.class);
         startActivity(intento);
     }
+    public void cine(View v){
+        Intent intent = new Intent(this, CinePicasso.class);
+        startActivity(intent);
+    }
 
     public void exit(View v){
         System.exit(0);

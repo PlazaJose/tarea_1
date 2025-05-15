@@ -64,6 +64,13 @@
                 android:text="@string/bt_calculadora_text" />
 
             <Button
+                android:id="@+id/mv_bt_cine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="cine"
+                android:text="@string/mv_bt_cine_text" />
+
+            <Button
                 android:id="@+id/bt_salir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

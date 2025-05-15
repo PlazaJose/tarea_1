@@ -5,6 +5,7 @@
     <string name="bt_salir_text">SALIR</string>
     <string name="mv_bt_inicio_sesion_text">INICIAR SESIOIN</string>
     <string name="mv_tv_title_text">BIENVENIDO</string>
+    <string name="mv_bt_cine_text">CINE</string>
 
     <string name="bt_crear_formulario_text">CREAR FORMULARIO</string>
     <string name="bt_editar_formulario_text">BUSCAR FORMULARIO</string>
@@ -92,4 +93,13 @@
 
 
     <string name="tv_luv_title">LISTA DE USUARIOS REGISTRADOS</string>
+
+    <string name="cp_tv_title_text">CINE</string>
+    <string name="cp_iv_1_content">SALA 1</string>
+    <string name="cp_iv_2_content">SALA 2</string>
+    <string name="cp_iv_3_content">SALA 3</string>
+    <string name="cp_edt_sala_1_text">ENLACE DE LA IMAGEN 1</string>
+    <string name="cp_edt_sala_2_text">ENLACE DE LA IMAGEN 2</string>
+    <string name="cp_edt_sala_3_text">ENLACE DE LA IMAGEN 3</string>
+    <string name="cp_bt_sala_1_text">ACTUALIZAR</string>
 </resources>
