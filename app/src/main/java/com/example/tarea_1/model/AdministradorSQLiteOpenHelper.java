@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import kotlin.text.UStringsKt;
+
 public class AdministradorSQLiteOpenHelper extends SQLiteOpenHelper {
     private static String USUARIOS_TABLE_NAME = "usuarios";
     private static String ACADEMIC_TABLE_NAME = "informacion_academica";
@@ -140,6 +142,39 @@ public class AdministradorSQLiteOpenHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         //db.rawQuery("SELECT * FROM "+USUARIOS_TABLE_NAME, new String[]{});
         Cursor cursor = db.query(USUARIOS_TABLE_NAME, null, "id = ?", new String[]{""+id}, null, null, null);
+        String nombre = "not foud";
+        String apellidos = "not foud";
+        int edad = -1;
+        String email ="not found";
+        String telefono = "not found";
+        String addres = "not found";
+        String sexo = "not found";
+        String documento_identidad = "not found";
+        String estado_civil = "not found";
+        //int id = -1;
+        if (cursor.moveToFirst()){
+            nombre = cursor.getString(1);
+            apellidos = cursor.getString(2);
+            edad = cursor.getInt(3);
+            email = cursor.getString(4);
+            telefono = cursor.getString(5);
+            addres = cursor.getString(6);
+            sexo = cursor.getString(7);
+            documento_identidad = cursor.getString(8);
+            estado_civil = cursor.getString(9);
+        }
+
+        //db.close();
+        Usuario usuario = new Usuario(nombre, apellidos, edad, email, telefono, addres, sexo, documento_identidad, estado_civil, id);
+        usuario.setPreferencias(consultar_pregerencias(id));
+        usuario.setInformacion_academica(consultar_informacion_academica(id));
+        usuario.setId(id);
+        return usuario;
+    }
+    public Usuario consultar_usuario(int id, String given_name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        //db.rawQuery("SELECT * FROM "+USUARIOS_TABLE_NAME, new String[]{});
+        Cursor cursor = db.query(USUARIOS_TABLE_NAME, null, "id = ? AND nombre = ?", new String[]{""+id, given_name}, null, null, null);
         String nombre = "not foud";
         String apellidos = "not foud";
         int edad = -1;

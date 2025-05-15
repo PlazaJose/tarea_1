@@ -3,6 +3,8 @@
     <string name="bt_formularios_text">FORMULARIOS</string>
     <string name="bt_calculadora_text">CALCULADORA</string>
     <string name="bt_salir_text">SALIR</string>
+    <string name="mv_bt_inicio_sesion_text">INICIAR SESIOIN</string>
+    <string name="mv_tv_title_text">BIENVENIDO</string>
 
     <string name="bt_crear_formulario_text">CREAR FORMULARIO</string>
     <string name="bt_editar_formulario_text">BUSCAR FORMULARIO</string>
@@ -82,6 +84,11 @@
     <string name="opration_text">The Operation</string>
 
     <string name="history_title">HISTORY</string>
+
+    <string name="is_tv_title_text">INICIO SESION</string>
+    <string name="is_edt_usuario_text">USUARIO</string>
+    <string name="is_edt_password_text">CONTRASEÑA</string>
+    <string name="is_bt_sign_in_text">INICIAR</string>
 
 
     <string name="tv_luv_title">LISTA DE USUARIOS REGISTRADOS</string>

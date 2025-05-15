@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Inicio_sesion">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView6"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -27,48 +27,52 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="48dp" />
+                android:layout_height="56dp" />
 
             <TextView
-                android:id="@+id/mv_tv_title"
+                android:id="@+id/is_tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleX="1"
                 android:gravity="center"
                 android:textSize="35sp"
-                android:text="@string/mv_tv_title_text" />
-
+                android:text="@string/is_tv_title_text" />
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="24dp" />
+                android:layout_height="56dp" />
 
-            <Button
-                android:id="@+id/mv_bt_inisio_sesion"
+            <EditText
+                android:id="@+id/is_edt_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="inicio_sesion"
-                android:text="@string/mv_bt_inicio_sesion_text" />
+                android:ems="10"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
+                android:autofillHints="name"
+                android:textColorHint="@android:color/black"
+                android:hint="@string/is_edt_usuario_text" />
 
-            <Button
-                android:id="@+id/bt_formularios"
+            <EditText
+                android:id="@+id/is_edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="formularios"
-                android:text="@string/bt_formularios_text" />
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="@string/is_edt_password_text"
+                android:textColorHint="@android:color/black"
+                android:autofillHints="name"
+                android:minWidth="48dp"
+                android:minHeight="48dp"/>
+
 
             <Button
-                android:id="@+id/bt_calculadora"
+                android:id="@+id/cc_bt_sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="calculadora"
-                android:text="@string/bt_calculadora_text" />
+                android:onClick="sign_in"
+                android:text="@string/is_bt_sign_in_text" />
 
-            <Button
-                android:id="@+id/bt_salir"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="exit"
-                android:text="@string/bt_salir_text" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
